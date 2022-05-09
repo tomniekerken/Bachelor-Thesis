@@ -1,2 +1,2 @@
 # Bachelor Thesis
-The Comparison of PHP and Node.js as Technologies for Webservers
+The Comparison of PHP and Node.js as Backend-Technologies for Webservers
