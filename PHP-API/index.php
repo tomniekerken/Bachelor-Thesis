@@ -17,7 +17,7 @@ session_start();
 
 $url_input = filter_input( INPUT_GET, '_url' ) ?? '';
 
-switch ($$url_input) {
+switch ($url_input) {
     case 'characterInteger':
         characterInteger();
         break;
@@ -28,7 +28,7 @@ switch ($$url_input) {
 }
 
 function characterInteger() {
-    
+    echo "hello world";
 }
 
 ?>
