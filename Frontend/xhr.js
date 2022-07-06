@@ -12,7 +12,7 @@ const sendHttpRequest = (method, url, data) => {
         const xhr = new XMLHttpRequest()
         xhr.open(method, url)
 
-        xhr.responsseType = 'json'
+        xhr.responseType = 'json'
 
         xhr.onload = () => {
             resolve(xhr.response)
@@ -23,16 +23,15 @@ const sendHttpRequest = (method, url, data) => {
     return promise
 }
 
-async function characterInteger() {
+const characterInteger = () => {
     var formData = new FormData(document.querySelector('#characterInteger'))
 
-    const sendData = () => {
-        sendHttpRequest('POST', 'http://localhost/Bachelor-Thesis/PHP-API/characterInteger', {
-            firstname: formData.get('firstname-ci'),
-            lastname: formData.get('lastname-ci'),
-            age: formData.get('age-ci')
-        }).then(responseData => {
-            console.log(responseData, 'hello world')
-        })
-    }
+    sendHttpRequest('POST', 'http://localhost/Bachelor-Thesis/PHP-API/characterInteger', {
+        firstnameCi: formData.get('firstname-ci'),
+        lastnameCi: formData.get('lastname-ci'),
+        ageCi: formData.get('age-ci')
+    }).then(responseData => {
+        console.log(responseData)
+    })
+
 }
