@@ -29,6 +29,9 @@ switch ($url_input) {
 }
 
 function characterInteger() {
+
+    $start = microtime(true);
+
     if ($_SERVER[ 'REQUEST_METHOD' ] === METHOD_POST) {
 
         $firstnameCi = filter_input( INPUT_POST, 'firstnameCi' );
@@ -37,7 +40,6 @@ function characterInteger() {
 
         if ($firstnameCi = 'Tom') {
             http_response_code( 201 );
-            json_encode( [ 'success' => true, 'time' => 12 ], JSON_PRETTY_PRINT );
         } else {
             http_response_code( 400 );
             json_encode( [ 'success' => true, 'time' => 12 ], JSON_PRETTY_PRINT );
@@ -48,6 +50,11 @@ function characterInteger() {
     } else {
         http_response_code( 400 );
     }
+
+    $time_elapsed_secs =  microtime(true) - $start;
+
+    echo json_encode( [ 'success' => true, 'time' => $time_elapsed_secs ], JSON_PRETTY_PRINT );
+
 }
 
 ?>
