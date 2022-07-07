@@ -4,13 +4,14 @@ const characterIntegerSubmit = document.querySelector('#characterIntegerSubmit')
 
 characterIntegerForm.addEventListener('submit', event => {
     event.preventDefault()
-    characterInteger()
+    characterIntegerNoValidation()
+    characterIntegerWithValidation()
 })
 
-const sendHttpRequest = (method, url, data) => {
+const phpApiCall = (method, paramUrl, data) => {
     const promise = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest()
-        xhr.open(method, url)
+        xhr.open(method, `http://localhost/Bachelor-Thesis/PHP-API/${paramUrl}`)
 
         xhr.responseType = 'json'
 
@@ -20,18 +21,56 @@ const sendHttpRequest = (method, url, data) => {
 
         xhr.send(JSON.stringify(data))
     })
+
     return promise
 }
 
-const characterInteger = () => {
-    var formData = new FormData(document.querySelector('#characterInteger'))
+async function characterIntegerNoValidation() {
+    let formData = new FormData(document.querySelector('#characterInteger'))
 
-    sendHttpRequest('POST', 'http://localhost/Bachelor-Thesis/PHP-API/characterInteger', {
+    let calls = 1
+    let index = 5
+
+    while (calls <= index) {
+        phpApiCall('POST', 'characterIntegerNoValidation', {
+            firstnameCi: formData.get('firstname-ci'),
+            lastnameCi: formData.get('lastname-ci'),
+            ageCi: formData.get('age-ci')
+        }).then(responseData => {
+            console.log(responseData)
+        })
+
+        calls++
+    }
+}
+
+async function characterIntegerWithValidation() {
+    let formData = new FormData(document.querySelector('#characterInteger'))
+
+    let calls = 1
+    let index = 5
+
+    while (calls <= index) {
+        phpApiCall('POST', 'characterIntegerWithValidation', {
+            firstnameCi: formData.get('firstname-ci'),
+            lastnameCi: formData.get('lastname-ci'),
+            ageCi: formData.get('age-ci')
+        }).then(responseData => {
+            console.log(responseData)
+        })
+
+        calls++
+    }
+}
+
+async function characterIntegerBoolean() {
+    let formData = new FormData(document.querySelector('#characterIntegerBoolean'))
+
+    phpApiCall('POST', 'characterIntegerBoolean', {
         firstnameCi: formData.get('firstname-ci'),
         lastnameCi: formData.get('lastname-ci'),
         ageCi: formData.get('age-ci')
     }).then(responseData => {
         console.log(responseData)
     })
-
 }

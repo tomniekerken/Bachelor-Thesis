@@ -12,37 +12,45 @@
     <h1>Performance-Test-Website</h1>
 
     <h2>Testing pure characters and integers</h2>
-    <form action="" id="characterInteger" method="POST">
+    <form id="characterInteger">
         <input type="text" name="firstname-ci" placeholder="Firstname">
         <input type="text" name="lastname-ci" placeholder="Lastname">
         <input type="number" name="age-ci" placeholder="Age">
-        <input type="submit" value="Senden" id="characterIntegerSubmit">
+        <input type="submit" value="Start measuring" id="characterIntegerSubmit">
     </form>
 
     <h2>Testing characters, integers and booleans</h2>
-    <form action="">
-
+    <form id="characterIntegerBoolean">
+        <input type="text" name="firstname-cib" placeholder="Firstname">
+        <input type="text" name="lastname-cib" placeholder="Lastname">
+        <input type="number" name="age-cib" placeholder="Age">
+        <input type="radio" name="boolean-cib" id="true" value="1">
+        <label for="true">True</label>
+        <input type="radio" name="boolean-cib" id="false" value="0">
+        <label for="false">False</label>
+        <input type="submit" value="Start measuring" id="characterIntegerBooleanSubmit">
     </form>
 
-    <h2>Testing images</h2>
-    <form action="">
-
-    </form>
-
-    <h2>Testing videos</h2>
-    <form action="">
-
-    </form>
-
-    <h2>Testing images and videos</h2>
-    <form action="">
-
+    <h2>Testing images or videos</h2>
+    <form id="file" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Start measuring" id="fileSubmit">
     </form>
 
     <h2>Testing characters, integers, booleans, images and videos</h2>
-    <form action="">
-
+    <form id="characterIntegerBooleanImageVideo">
+        <input type="text" name="firstname-cibiv" placeholder="Firstname">
+        <input type="text" name="lastname-cibiv" placeholder="Lastname">
+        <input type="number" name="age-cibiv" placeholder="Age">
+        <input type="radio" name="boolean-cibiv" id="true" value="1">
+        <label for="true">True</label>
+        <input type="radio" name="boolean-cibiv" id="false" value="0">
+        <label for="false">False</label>
+        <input type="file" name="imageOrVideo" id="file-cibiv">
+        <input type="file" name="imageOrVideo" id="file">
+        <input type="submit" value="Start measuring" id="characterIntegerBooleanImageVideoSubmit">
     </form>
     
+    <h2></h2>
 </body>
 </html>
